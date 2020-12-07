@@ -128,6 +128,8 @@ void addAfterSROAAnalysis(const GlobalOptions &GO, const DataLayout &DL,
   Passes.add(createSROAPass());
   Passes.add(createProcessDIMemoryTraitPass(
     [&DL](DIMemoryTrait &T) { markIfNotPromoted(DL, T); }));
+  Passes.add(createGlobalDefinedMemoryPass());
+  Passes.add(createArrayScalarizePass());
   if (!GO.UnsafeTfmAnalysis)
     Passes.add(createProcessDIMemoryTraitPass(
       markIf<trait::Lock, trait::NoPromotedScalar>));

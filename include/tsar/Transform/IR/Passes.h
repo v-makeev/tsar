@@ -94,5 +94,9 @@ void initializeDependenceInlinerPassPass(PassRegistry &Registry);
 /// Create an inliner pass which handle functions which are necessary for
 /// analysis.
 Pass *createDependenceInlinerPass(bool InsertLifetime = true);
+
+void initializeArrayScalarizePassPass(PassRegistry &Registry);
+
+FunctionPass *createArrayScalarizePass();
 }
 #endif//TSAR_IR_TRANSFORM_PASSES_H
